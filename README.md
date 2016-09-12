@@ -78,3 +78,6 @@ modprobe ip_vs_ca
 			ntohs(peeraddr[1].sin_port));
 	}
 ```
+
+#注
+该project直接fork了https://github.com/yubo/ip\_vs\_ca，在其上做了一点修改已解决遇到的问题，感谢作者
