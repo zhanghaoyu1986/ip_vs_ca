@@ -59,6 +59,7 @@ static int ip_vs_ca_modify_uaddr(int fd, struct sockaddr *uaddr, int *ulen, int 
 	}else if(sock->type == SOCK_DGRAM){
 		cp = ip_vs_ca_conn_get(sin[0].sin_family, IPPROTO_UDP, &addr, sin[0].sin_port);
 	}else{
+                sockfd_put(sock);
 		return 6;
 	}
 
@@ -67,6 +68,7 @@ static int ip_vs_ca_modify_uaddr(int fd, struct sockaddr *uaddr, int *ulen, int 
 				&addr.ip, ntohs(sin[0].sin_port),
 				cp ? "hit" : "not hit");
 
+        sockfd_put(sock);
 	if (!cp)
 		return 7;
 
